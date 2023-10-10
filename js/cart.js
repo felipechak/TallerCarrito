@@ -1,3 +1,16 @@
+var subtotal;
+function cambioPago(event){
+  let formaDePago = event.value;
+  if (formaDePago === 1) {
+    costoTotal = subtotal - (subtotal*0.10)
+  } else if (formaDePago === 2){
+    costoTotal = subtotal + (subtotal*0.07)
+  } else {
+    costoTotal = subtotal
+  }
+  console.log(costoTotal)
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const cartContainer = document.getElementById("container");
     
@@ -9,22 +22,39 @@ document.addEventListener("DOMContentLoaded", function () {
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${product.name}</td>
-        <td>1</td>
-        <td>${product.price}</td>
-        <td>${product.price}</td>
+        <td>${product.cantidad}</td>
+        <td>${product.costo}</td>
+        <td>${product.costo * product.cantidad}</td>
       `;
       
       cartContainer.appendChild(row);
     });
     
     // Calcula el subtotal
-    const subtotal = cart.reduce(function (total, product) {
+    subtotal = cart.reduce(function (total, product) {
       return total + parseFloat(product.price.replace("$", ""));
     }, 0);
     
     // Actualiza el subtotal en la tabla
     const subtotalElement = document.querySelector(".subtotal .font-weight-bold");
     subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+
+    // Calculo costo total de la compra
+
+
+    
+
+/*     function cambioPago(event){
+      console.log(event)
+      let formaDePago = event.value;
+      if (formaDePago === 1) {
+        costoTotal = total - (total*0.10)
+      } else if (formaDePago === 2){
+        costoTotal = total + (total*0.07)
+      } else {
+        costoTotal = total
+      }
+    } */
 
 
 const checkbox = document.getElementById("activarCampos");
