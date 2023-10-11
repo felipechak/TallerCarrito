@@ -173,16 +173,16 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 const contenedorToHtml = (elem) => {
-    return `<div class="row">
+    return `<div class="row item">
     <div class="col-md-8 mb-8">
         <div class="card">
             <img src="${elem.image}" alt="Producto 1" class="card-img-top">
             <div class="card-body">
                 <h3 class="card-title">${elem.name}</h3>
-                <p>Id:</p><p class="card-text">Id: ${elem._id}</p>
-                <p>Stock:</p><p class="card-text product-stock">${elem.stock}</p>
-                <p>Precio:</p><p class="card-text product-price">${elem.costo}</p>
-                <p>Descripcion:</p><p class="card-text">${elem.description}</p>
+                <p class="card-text"><strong>Id:</strong> ${elem._id} </p>
+                <p class="card-text product-stock"><strong>Stock:</strong> ${elem.stock}</p>
+                <p class="card-text product-price"><strong>Precio:</strong> ${elem.costo}</p>
+                <p class="card-text"><strong>Descripcion:</strong> ${elem.description}</p>
                 <button class="btn btn-primary" data-id="${elem._id}" id="agregar">Agregar al carrito</button>
             </div>
         </div>
