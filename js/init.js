@@ -159,7 +159,7 @@ const stockProducts = [
       "description": "Officia et anim sit nostrud culpa quis magna qui. \r\n",
       "image": "https://loremflickr.com/cache/resized/65535_52750893698_5b1c16297f_320_240_nofilter.jpg"
     }
-  ]
+]
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -210,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Verifica si ya hay elementos en el carrito en localStorage
         let cart = localStorage.getItem("cart") !== null ? JSON.parse(localStorage.getItem("cart")) : [];
 
-        //console.log(document.querySelectorAll(".card-title")[index])
         // Agrega el producto al carrito
         if (cart.filter((elem) => elem.id === product.id).length > 0) {
             cart.forEach(p => {
@@ -218,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     p.cantidad += 1
                 }
             })
-        }else{
+        } else {
             cart.push(product);
         }
         // Guarda el carrito actualizado en localStorage
