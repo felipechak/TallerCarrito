@@ -290,9 +290,3 @@ input {
   .item{
     padding-bottom: 20px;
   }
-
-  a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    border-radius: 60px
-  }
