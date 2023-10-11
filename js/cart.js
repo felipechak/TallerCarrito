@@ -1,14 +1,16 @@
+const subtotalElement = document.querySelector(".subtotal .font-weight-bold");
 var subtotal;
 function cambioPago(event){
   let formaDePago = event.value;
-  if (formaDePago === 1) {
-    costoTotal = subtotal - (subtotal*0.10)
-  } else if (formaDePago === 2){
-    costoTotal = subtotal + (subtotal*0.07)
+  if (formaDePago == 1) {
+    costoTotal = subtotal*0.9
+  } else if (formaDePago == 2){
+    costoTotal = subtotal*0.93
   } else {
     costoTotal = subtotal
   }
   console.log(costoTotal)
+  subtotalElement.textContent = `$${costoTotal.toFixed(2)}`;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -19,12 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Recorre el carrito y crea filas en la tabla para cada producto
     cart.forEach(function (product) {
+      console.log(product)
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${product.name}</td>
         <td>${product.cantidad}</td>
-        <td>${product.costo}</td>
-        <td>${product.costo * product.cantidad}</td>
+        <td>${product.price}</td>
+        <td>${product.price * product.cantidad}</td>
       `;
       
       cartContainer.appendChild(row);
@@ -32,40 +35,21 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Calcula el subtotal
     subtotal = cart.reduce(function (total, product) {
-      return total + parseFloat(product.price.replace("$", ""));
+      return total + parseFloat(product.price.replace("$", ""))*product.cantidad;
     }, 0);
     
     // Actualiza el subtotal en la tabla
-    const subtotalElement = document.querySelector(".subtotal .font-weight-bold");
-    subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-
-    // Calculo costo total de la compra
-
-
     
-
-/*     function cambioPago(event){
-      console.log(event)
-      let formaDePago = event.value;
-      if (formaDePago === 1) {
-        costoTotal = total - (total*0.10)
-      } else if (formaDePago === 2){
-        costoTotal = total + (total*0.07)
-      } else {
-        costoTotal = total
-      }
-    } */
-
+    subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
 
 const checkbox = document.getElementById("activarCampos");
 const boleta = document.getElementById("boleta");
 const campos = boleta.querySelectorAll('input[type="text"], input[type="number"]');
 
-  checkbox.addEventListener('change', function() {
-    campos.forEach(function(input) {
-        input.disabled = !checkbox.checked;
-    });
-  
+checkbox.addEventListener('change', function() {
+  campos.forEach(function(input) {
+      input.disabled = !checkbox.checked;
+  });
 });
 
 const inicio = document.getElementById("volverInicio");
