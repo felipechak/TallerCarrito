@@ -9,8 +9,7 @@ function cambioPago(event){
   } else {
     costoTotal = subtotal
   }
-  console.log(costoTotal)
-  subtotalElement.textContent = `$${costoTotal.toFixed(2)}`;
+  subtotalElement.textContent = `$${costoTotal.toFixed(0)}`;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -39,8 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 0);
     
     // Actualiza el subtotal en la tabla
-    
-    subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+    subtotalElement.textContent = `$${subtotal.toFixed(0)}`;
 
 const checkbox = document.getElementById("activarCampos");
 const boleta = document.getElementById("boleta");
