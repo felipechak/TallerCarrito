@@ -173,8 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 const contenedorToHtml = (elem) => {
-    return `<div class="row item">
-    <div class="col-md-8 mb-8">
+    return `<div class="col-md-6 item">
+    <div>
         <div class="card">
             <img src="${elem.image}" alt="Producto 1" class="card-img-top">
             <div class="card-body">
